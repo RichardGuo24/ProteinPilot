@@ -4,7 +4,7 @@ import React from "react"
 
 import IngredientList from "./IngredientList";
 import ClaudeRecipe from "/src/components/ClaudeRecipe.jsx"
-import { getRecipeFromChefClaude } from "/src/ai.js"
+import { getRecipeFromServer } from "/src/apiClient.js"
 
 
 export default function Main()
@@ -17,6 +17,7 @@ export default function Main()
     const [ingredientList, setIngredientList] = React.useState([]);
     const [protein, setProtein] = React.useState("")
     const [recipe, setRecipe] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
 
     function addIngredient(formData)
     {
@@ -35,8 +36,15 @@ export default function Main()
 
     async function getRecipe()
     {
-        const recipeMarkdown = await getRecipeFromChefClaude([...ingredientList, protein]);
-        setRecipe(recipeMarkdown)
+        setLoading(true)
+        try
+        {
+            const recipeMarkdown = await getRecipeFromServer([...ingredientList, protein]);
+            setRecipe(recipeMarkdown)
+        } finally
+        {
+            setLoading(false)
+        }
     }
 
     return (
@@ -73,6 +81,7 @@ export default function Main()
                 />
             }
             {recipe ? <ClaudeRecipe recipe={recipe} /> : null}
+            {loading ? <h1>Loading cuh</h1> : null}
         </main>
     )
 }
