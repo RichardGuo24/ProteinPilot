@@ -6,6 +6,7 @@ export default function Header()
         <header >
             <img src={chefIcon} />
             <h1>Protein Pilot</h1>
+            <a href="">Saved Recipes</a>
         </header>
     )
 }

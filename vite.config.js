@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Anything starting with /api will be forwarded to your local backend
+
       '/api': {
-        target: 'http://localhost:3000', // or wherever your serverless function runs locally
+        target: 'http://localhost:3000',
         changeOrigin: true,
       }
     }

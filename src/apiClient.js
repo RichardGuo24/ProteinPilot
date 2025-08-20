@@ -1,4 +1,3 @@
-
 export async function getRecipeFromServer(ingredients)
 {
     const res = await fetch("/api/recipe", {
@@ -15,8 +14,6 @@ export async function getRecipeFromServer(ingredients)
     const data = await res.json();
     return data.recipe;
 }
-
-
 
 {/*
 import Anthropic from "@anthropic-ai/sdk"
