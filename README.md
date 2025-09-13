@@ -55,7 +55,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<div align="center">
+  <img src="images/logo.png" alt="Logo">
+</div>
 Documentation unfinished. In the meantime, check out website here if interested!
 https://proteinpilot.vercel.app/
 
